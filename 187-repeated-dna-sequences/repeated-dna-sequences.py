@@ -6,6 +6,6 @@ class Solution:
             sequence = s[i:i+10]
             if sequence in seen:
                 repeated.add(sequence)
-            else:
-                seen.add(sequence)
+
+            seen.add(sequence)
         return(list(repeated))
