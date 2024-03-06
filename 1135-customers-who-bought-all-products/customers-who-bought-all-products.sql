@@ -1,4 +1,6 @@
 -- Write your PostgreSQL query statement below
-select customer_id  from 
-customer 
-group by customer_id having count(distinct product_key) = (select count(*) from product);
+SELECT c.customer_id
+FROM Product p
+LEFT JOIN Customer c ON p.product_key = c.product_key
+GROUP BY c.customer_id
+HAVING COUNT(DISTINCT p.product_key) = (SELECT COUNT(*) FROM Product);
