@@ -1,6 +1,7 @@
 class Solution:
     def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
-        nums = sorted(arr)
+        arr.sort()
+        nums = arr
         print(nums)
         output = []
         mindiff = nums[-1]-nums[0]
