@@ -3,7 +3,6 @@ class Solution:
         nums.sort()
         if 1 not in nums:
             return 1
-        print(nums)
         if len(nums) == 1:
             if nums[0]>1 or nums[0]<1:
                 return 1
