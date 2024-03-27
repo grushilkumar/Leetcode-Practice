@@ -7,8 +7,6 @@ class Solution:
         if len(nums) == 1:
             if nums[0]>1 or nums[0]<1:
                 return 1
-            else:
-                return nums[0]+1
 
         for i in range(len(nums)):
             if i> 0:
