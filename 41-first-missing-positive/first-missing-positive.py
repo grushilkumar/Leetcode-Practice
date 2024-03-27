@@ -1,20 +1,22 @@
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        nums.sort()
+        n = len(nums)
         if 1 not in nums:
             return 1
-        if len(nums) == 1:
-            if nums[0]>1 or nums[0]<1:
-                return 1
-        if nums[-1]<0:
-                return 1
-
-        for i in range(len(nums)):
-            if i> 0:
-                if int(nums[0])>1:
-                    return 1
-                elif nums[i]-1 != nums[i-1] and nums[i-1]>0 and nums[i] != nums[i-1]:
-                    print('hi')
-                    return nums[i-1]+1
-        return nums[len(nums)-1]+1
+        if n == 1:
+            return 2 if nums[0] == 1 else 1
+        for i in range(n):
+            if nums[i] <= 0 or nums[i] > n:
+                nums[i] = 1
+        for i in range(n):
+            index = abs(nums[i]) - 1
+            if nums[index] > 0:
+                nums[index] = -nums[index]
         
+        # Find the first positive number
+        for i in range(n):
+            if nums[i] > 0:
+                return i + 1
+        
+        # If all numbers are present from 1 to n, return n + 1
+        return n + 1
