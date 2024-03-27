@@ -1,22 +1,22 @@
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        n = len(nums)
-        if 1 not in nums:
-            return 1
-        if n == 1:
-            return 2 if nums[0] == 1 else 1
-        for i in range(n):
-            if nums[i] <= 0 or nums[i] > n:
-                nums[i] = 1
-        for i in range(n):
-            index = abs(nums[i]) - 1
-            if nums[index] > 0:
-                nums[index] = -nums[index]
+
+        # def swap(arr, i, j):
+        #     arr[i], arr[j] = arr[j], arr[i]
         
-        # Find the first positive number
+        n = len(nums)
+        i = 0
+
         for i in range(n):
-            if nums[i] > 0:
+            while 0<nums[i]<=n  and nums[i] != nums[nums[i]-1]:
+                corrected_index = nums[i]-1
+                nums[i],nums[corrected_index] =nums[corrected_index],nums[i]
+                # swap(nums,i,nums[i]-1) 
+
+
+        for i in range(n):
+            if nums[i] != i + 1:
                 return i + 1
         
-        # If all numbers are present from 1 to n, return n + 1
+        # If all positive integers from 1 to n are present, return n + 1
         return n + 1
