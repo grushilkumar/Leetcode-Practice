@@ -10,3 +10,8 @@ class Solution:
             x = nums[a]
         return x
         
+
+
+
+
+        
